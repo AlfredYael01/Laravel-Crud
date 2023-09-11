@@ -33,6 +33,7 @@
 
     <p> <h4> Affichage liste élèves </h4></p>
     @foreach($Eleve as $eleve)
+        <a href="{{route('eleves.destroy', $eleve->id)}}">Supprimer</a>
         <p> {{$eleve->name}}  {{$eleve->surname}}</p>
     @endforeach
 

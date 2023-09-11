@@ -35,4 +35,11 @@ class ElevesController extends Controller
         ]);
         return "Succès";
     }
+    public function destroy(Request $request) {
+        $id = $request->input('id');
+
+        $eleveToDelete = Eleve::where('id', $id)->get();
+
+        $eleveToDelete->delete();
+    }
 }
