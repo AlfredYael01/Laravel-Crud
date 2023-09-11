@@ -19,6 +19,8 @@
     @foreach($Eleve as $eleve)
         <p> {{$eleve->name}}  {{$eleve->surname}}</p>
     @endforeach
+
 </html>
+
 
 
