@@ -19,15 +19,19 @@ class ElevesController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nom' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email|max:255',
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
         Eleve::create([
-            'nom' => $request->nom,
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'dob' => $request->dob,
+            'student_number' => $request->student_number,
             'email' => $request->email,
+            'image' => $request->image,
         ]);
         return "Succès";
     }
