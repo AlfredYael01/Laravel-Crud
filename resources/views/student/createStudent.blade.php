@@ -33,8 +33,13 @@
 
     <p> <h4> Affichage liste élèves </h4></p>
     @foreach($Eleve as $eleve)
-        <a href="{{route('eleves.destroy', $eleve->id)}}">Supprimer</a>
-        <p> {{$eleve->name}}  {{$eleve->surname}}</p>
+        <p> {{$eleve->name}} {{$eleve->surname}}
+        <form action="{{ route('eleves.destroy', $eleve->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Supprimer</button>
+        </form>
+        </p>
     @endforeach
 
 </html>

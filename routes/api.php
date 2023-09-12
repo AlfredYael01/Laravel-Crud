@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/eleves', [ElevesController::class, 'store'])->name('eleves.store');
 
-Route::delete('/eleves', [ElevesController::class, 'destroy'])->name('eleves.destroy');
+Route::delete('/eleves/{id}', [ElevesController::class, 'destroy'])->name('eleves.destroy');
