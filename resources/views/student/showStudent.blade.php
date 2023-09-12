@@ -30,5 +30,4 @@
         <input type="submit" value="Envoyer" />
     </div>
 </form>
-
-<p> {{$eleveToShow->name}}</p>
+</html>
