@@ -22,3 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/eleves', [ElevesController::class, 'store'])->name('eleves.store');
 
 Route::delete('/eleves/{id}', [ElevesController::class, 'destroy'])->name('eleves.destroy');
+
+Route::put('eleves/{id}', [ElevesController::class, 'update'])->name('eleves.update');
+
+Route::get('/eleves/{id}', [ElevesController::class, 'show'])->name('eleves.show');

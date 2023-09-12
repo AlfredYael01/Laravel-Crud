@@ -39,6 +39,16 @@
             @method('DELETE')
             <button type="submit">Supprimer</button>
         </form>
+        <form action="{{ route('eleves.update', $eleve->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+            <button type="submit">Modifier</button>
+        </form>
+        <form action="{{ route('eleves.show', $eleve->id) }}" method="POST">
+            @csrf
+            @method('GET')
+            <button type="submit">Consulter</button>
+        </form>
         </p>
     @endforeach
 

@@ -39,4 +39,14 @@ class ElevesController extends Controller
         $eleveToDelete = Eleve::where('id', $id)->first();
         $eleveToDelete->delete();
     }
+
+    public function update($id){
+        $eleveToUpdate = Eleve::where('id', $id)->first();
+        $eleveToUpdate->update();
+    }
+
+    public function show($id){
+        $eleveToShow = Eleve::where('id', $id)->first();
+        return view('student.showStudent', compact('eleveToShow'));
+    }
 }
