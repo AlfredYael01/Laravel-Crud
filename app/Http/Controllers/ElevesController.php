@@ -40,9 +40,36 @@ class ElevesController extends Controller
         $eleveToDelete->delete();
     }
 
-    public function update($id){
+    public function update($id,Request $request){
         $eleveToUpdate = Eleve::where('id', $id)->first();
-        $eleveToUpdate->update();
+
+        if ($request->has('name')) {
+            $eleveToUpdate->name = $request->input('name');
+        }
+
+        if ($request->has('surname')) {
+            $eleveToUpdate->surname = $request->input('surname');
+        }
+
+        if ($request->has('dob')) {
+            $eleveToUpdate->dob = $request->input('dob');
+        }
+
+        if ($request->has('student_number')) {
+            $eleveToUpdate->student_number = $request->input('student_number');
+        }
+
+        if ($request->has('email')) {
+            $eleveToUpdate->email = $request->input('email');
+        }
+
+        if ($request->has('image')) {
+            // Assurez-vous que votre modèle Eleve a un champ 'image' pour la mise à jour de l'image.
+            $eleveToUpdate->image = $request->input('image');
+        }
+
+        // Enregistrer les modifications dans la base de données
+        $eleveToUpdate->save();
     }
 
     public function show($id){

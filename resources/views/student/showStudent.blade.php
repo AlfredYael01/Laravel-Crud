@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<form action="{{route('eleves.store')}}" method="POST">
+<form action="{{route('eleves.update',  $eleveToShow->id)}}" method="POST">
     @csrf
+    @method('PUT')
     <div class="name">
         <label for="name"></label>
         <input type="text" name="name" value="{{ $eleveToShow->name }}">
@@ -27,7 +28,7 @@
         <input type="text" name="image" value="{{ $eleveToShow->image }}">
     </div>
     <div class="form-example">
-        <input type="submit" value="Envoyer" />
+        <input type="submit" value="Enregistrer" />
     </div>
 </form>
 </html>
