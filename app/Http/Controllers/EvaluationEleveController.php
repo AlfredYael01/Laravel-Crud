@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\EvaluationEleve;
 class EvaluationEleveController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function evaluationEleve()
     {
-        //
+        $EvaluationEleve= EvaluationEleve::all();
+        return view('student.displayEvaluationNotes', compact('EvaluationEleve'));
     }
 
     /**
