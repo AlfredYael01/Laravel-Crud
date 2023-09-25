@@ -5,16 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Module;
 use Illuminate\Http\Request;
 
-class ModuleController extends Controller
+class ModulesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function modules()
     {
-        $Module = ModuleController::all(); #Récupérer les élèves
-
-        return view('modules.index', compact('Module'));
+        $Module = Module::all(); #Récupérer les élèves
+        return view('student.displayEvaluationNotes', compact('Module'));
     }
 
     /**
@@ -28,7 +27,7 @@ class ModuleController extends Controller
         $name = $data['name'];
         $coefficient = $data['coefficient'];
 
-        $Module = new ModuleController();
+        $Module = new ModulesController();
         $Module->code=$code;
         $Module->name=$name;
         $Module->coefficient=$coefficient;

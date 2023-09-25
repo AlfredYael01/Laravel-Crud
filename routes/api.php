@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ElevesController;
+use App\Http\Controllers\ModulesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
