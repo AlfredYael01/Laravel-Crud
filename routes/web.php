@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ElevesController;
+use App\Http\Controllers\EvaluationEleveController;
 use App\Http\Controllers\ModuleController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,4 @@ Route::get('/', function () {
 
 Route::get('/eleves', [ElevesController::class, 'eleves'])->name('student.add');
 Route::get('/module', [ModuleController::class, 'module'])->name('module.index');
+Route::get('/evaluationEleve', [EvaluationEleveController::class, 'evaluationEleve'])->name('evaluationEleve.index');

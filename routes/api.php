@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ElevesController;
+use App\Http\Controllers\EvaluationEleveController;
 use App\Http\Controllers\ModuleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -39,3 +40,5 @@ Route::resource('/eleves', ElevesController::class);
 //Route::get('/modules/{id}', [ModulesController::class, 'show'])->name('modules.show');
 
 Route::resource('/module', ModuleController::class);
+
+Route::resource('/evaluationEleve', EvaluationEleveController::class);
