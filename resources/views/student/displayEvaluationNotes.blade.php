@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="ressources/css/displayEvaluationNotes">
 </head>
 <body>
-<p><h1> Affichage des notes des évaluation de l'élève</h1></p>
+<p><h1> Affichage des notes d'une évaluation</h1></p>
     @foreach($Evaluation as $evaluation)
    <table>
        <tr>
