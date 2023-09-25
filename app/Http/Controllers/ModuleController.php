@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Module;
 use Illuminate\Http\Request;
 
-class Module extends Controller
+class ModuleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $Module = ModuleController::all(); #Récupérer les élèves
+
+        return view('modules.index', compact('Module'));
     }
 
     /**
@@ -19,7 +22,18 @@ class Module extends Controller
      */
     public function create()
     {
-        //
+        $data = request()-> all();
+
+        $code = $data['code'];
+        $name = $data['name'];
+        $coefficient = $data['coefficient'];
+
+        $Module = new ModuleController();
+        $Module->code=$code;
+        $Module->name=$name;
+        $Module->coefficient=$coefficient;
+
+        $Module->save();
     }
 
     /**
