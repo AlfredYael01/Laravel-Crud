@@ -11,7 +11,8 @@ class Evaluation extends Controller
      */
     public function index()
     {
-        //
+        $evaluations = Evaluation::all();
+        return view('evaluation.createEvaluation', compact('evaluations'));
     }
 
     /**
@@ -19,7 +20,7 @@ class Evaluation extends Controller
      */
     public function create()
     {
-        //
+        return view('evaluation.createEvaluation');
     }
 
     /**
@@ -27,7 +28,22 @@ class Evaluation extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'date' => 'required|date',
+            'relation_mod' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+            'coefficients' => 'required|integer',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        Evaluation::create([
+            'date' => $request->date,
+            'relation_mod' => $request->relation_mod,
+            'title' => $request->title,
+            'coefficients' => $request->coefficients,
+        ]);
+        return "Succès";
     }
 
     /**
@@ -35,7 +51,8 @@ class Evaluation extends Controller
      */
     public function show(string $id)
     {
-        //
+         $evaluationToShow = Evaluation::where('id', $id)->first();
+            return view('evaluation.showEvaluation', compact('evaluationToShow'));
     }
 
     /**
@@ -43,7 +60,8 @@ class Evaluation extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $evaluationToEdit = Evaluation::where('id', $id)->first();
+        return view('evaluation.editEvaluation', compact('evaluationToEdit'));
     }
 
     /**
@@ -51,7 +69,26 @@ class Evaluation extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $evaluationToUpdate = Evaluation::where('id', $id)->first();
+
+        if ($request->has('date')) {
+            $evaluationToUpdate->date = $request->input('date');
+        }
+
+        if ($request->has('relation_mod')) {
+            $evaluationToUpdate->relation_mod = $request->input('relation_mod');
+        }
+
+        if ($request->has('title')) {
+            $evaluationToUpdate->title = $request->input('title');
+        }
+
+        if ($request->has('coefficients')) {
+            $evaluationToUpdate->coefficients = $request->input('coefficients');
+        }
+
+        $evaluationToUpdate->save();
+        return "Succès";
     }
 
     /**
@@ -59,6 +96,7 @@ class Evaluation extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $evaluationToDelete = Evaluation::where('id', $id)->first();
+        $evaluationToDelete->delete();
     }
 }

@@ -11,10 +11,8 @@ class ElevesController extends Controller
     public function eleves()
     {
         $Eleve = Eleve::all(); #Récupérer les élèves
-
         return view('student.createStudent', compact('Eleve'));
     }
-
 
     public function store(Request $request)
     {

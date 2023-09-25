@@ -24,5 +24,8 @@ class Module extends Model
         'coefficient'=> 'integer'
 
     ];
-
+    public function evaluation()
+    {
+        return $this->hasMany(Evaluation::class);
+    }
 }
