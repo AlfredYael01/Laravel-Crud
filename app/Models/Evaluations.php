@@ -22,5 +22,8 @@ class Evaluations extends Model
     {
         return $this->belongsTo(Module::class);
     }
+    public function evaluationEleve(){
+        return $this->belongsTo(EvaluationEleve::class);
+    }
 }
 

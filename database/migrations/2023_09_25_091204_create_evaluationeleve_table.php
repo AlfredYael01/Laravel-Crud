@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('evaluation', function (Blueprint $table) {
+        Schema::create('evaluationeleve', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
-            $table->string('relation_mod');
-            $table->string('title');
-            $table->integer('coefficients');
-            $table->foreign('id')->references('id')->on('module');
+            $table->unsignedBigInteger('eleve_id');
+            $table->unsignedBigInteger('evaluation_id');
+            $table->float('note');
+
             $table->timestamps();
+
+            $table->foreign('eleve_id')->references('id')->on('eleves');
+            $table->foreign('evaluation_id')->references('id')->on('evaluation');
         });
     }
 
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('evaluation');
+        Schema::dropIfExists('evaluationeleve');
     }
 };

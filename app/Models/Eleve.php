@@ -14,6 +14,9 @@ class Eleve extends Model
         "student_number" => "integer"
     ];
 
+    public function evaluationEleve(){
+        return $this->belongsTo(EvaluationEleve::class);
+    }
     use HasFactory;
 }
 
