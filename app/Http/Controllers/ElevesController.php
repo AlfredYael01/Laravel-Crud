@@ -74,4 +74,5 @@ class ElevesController extends Controller
         $eleveToShow = Eleve::where('id', $id)->first();
         return view('student.showStudent', compact('eleveToShow'));
     }
+
 }

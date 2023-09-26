@@ -29,16 +29,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //
 //Route::get('/eleves/{id}', [ElevesController::class, 'show'])->name('eleves.show');
 
-Route::resource('/eleves', ElevesController::class);
 
-//Route::post('/modules', [ModulesController::class, 'store'])->name('modules.store');
-//
-//Route::delete('/modules/{id}', [ModulesController::class, 'destroy'])->name('modules.destroy');
-//
-//Route::put('modules/{id}', [ModulesController::class, 'update'])->name('modules.update');
-//
-//Route::get('/modules/{id}', [ModulesController::class, 'show'])->name('modules.show');
-
-Route::resource('/module', ModuleController::class);
-
-Route::resource('/evaluationEleve', EvaluationEleveController::class);

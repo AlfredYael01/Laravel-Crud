@@ -42,8 +42,9 @@
         <form action="{{ route('eleves.show', $eleve->id) }}" method="POST">
             @csrf
             @method('GET')
-            <button type="submit">Consulter</button>
+            <button type="submit">Voir</button>
         </form>
+        <a href="{{ route('evaluationEleve.show' , $eleve->id) }}">Notes</a>
         </p>
     @endforeach
 

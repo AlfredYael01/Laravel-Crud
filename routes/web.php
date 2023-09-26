@@ -20,6 +20,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('/eleves', ElevesController::class);
+
+Route::resource('/module', ModuleController::class);
+
+Route::resource('/evaluationEleve', EvaluationEleveController::class);
+
 Route::get('/eleves', [ElevesController::class, 'eleves'])->name('student.add');
+
 Route::get('/module', [ModuleController::class, 'module'])->name('module.index');
+
 Route::get('/evaluationEleve', [EvaluationEleveController::class, 'evaluationEleve'])->name('evaluationEleve.index');
+

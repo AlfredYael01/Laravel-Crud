@@ -15,6 +15,12 @@ class EvaluationEleveController extends Controller
         return view('student.displayEvaluationNotes', compact('EvaluationEleve'));
     }
 
+    public function evaluationEleveforGrades()
+    {
+        $EvaluationEleve= EvaluationEleve::all();
+        return view('student.displayStudentGrades', compact('EvaluationEleve'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -36,7 +42,8 @@ class EvaluationEleveController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $EvaluationEleve = EvaluationEleve::where('eleve_id', $id)->get();
+        return view('student.displayStudentGrades', compact('EvaluationEleve'));
     }
 
     /**
