@@ -61,9 +61,14 @@ class ElevesController extends Controller
             $eleveToUpdate->email = $request->input('email');
         }
 
-        if ($request->has('image')) {
-            // Assurez-vous que votre modèle Eleve a un champ 'image' pour la mise à jour de l'image.
-            $eleveToUpdate->image = $request->input('image');
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            // Générez un nom de fichier unique pour éviter les écrasements
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            // Enregistrez le fichier dans le dossier de stockage public
+            $image->storeAs('public/images', $imageName);
+            // Enregistrez le nom du fichier dans la base de données
+            $eleveToUpdate->image = $imageName;
         }
 
         // Enregistrer les modifications dans la base de données

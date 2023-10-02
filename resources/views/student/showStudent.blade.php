@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<form action="{{route('eleves.update',  $eleveToShow->id)}}" method="POST">
+<form action="{{route('eleves.update',  $eleveToShow->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
-    <div class="name">
-        <label for="name"></label>
-        <input type="text" name="name" value="{{ $eleveToShow->name }}">
+    <div class="image">
+        <label for="image">Image de profil</label>
+        <input type="file" name="image">
     </div>
     <div class="surname">
         <label for="surname"></label>
@@ -24,8 +24,8 @@
         <input type="text" name="email" value="{{ $eleveToShow->email }}" >
     </div>
     <div class="image">
-        <label for="image">Entrez votre image</label>
-        <input type="text" name="image" value="{{ $eleveToShow->image }}">
+        <label for="image">Selectionnez votre image</label>
+        <input type="file" name="image" value="{{ $eleveToShow->image }}">
     </div>
     <div class="form-example">
         <input type="submit" value="Enregistrer" />
