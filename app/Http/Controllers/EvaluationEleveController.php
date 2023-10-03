@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\EvaluationEleve;
+
 class EvaluationEleveController extends Controller
 {
     /**
@@ -12,6 +13,7 @@ class EvaluationEleveController extends Controller
     public function evaluationEleve()
     {
         $EvaluationEleve= EvaluationEleve::all();
+
         return view('student.displayEvaluationNotes', compact('EvaluationEleve'));
     }
 
@@ -44,7 +46,9 @@ class EvaluationEleveController extends Controller
     {
         $EvaluationEleve = EvaluationEleve::where('eleve_id', $id)->get();
         return view('student.displayStudentGrades', compact('EvaluationEleve'));
+
     }
+
 
     /**
      * Show the form for editing the specified resource.
