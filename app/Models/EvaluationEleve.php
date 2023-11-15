@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\Evaluation;
+use App\Http\Controllers\EvaluationControler;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,11 +10,11 @@ class EvaluationEleve extends Model
 {
     public function eleve()
     {
-        return $this->belongsTo(Eleve::class);
+        return $this->hasOne(Eleve::class, 'id', 'eleve_id');
     }
     public function evaluation()
     {
-       return $this->hasOne(Evaluation::class);
+       return $this->belongsTo(EvaluationControler::class);
     }
 
     protected $primaryKey ='id';

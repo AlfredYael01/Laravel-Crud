@@ -3,7 +3,7 @@
 namespace App\Models;
 
 
-use App\Http\Controllers\Evaluation;
+use App\Http\Controllers\EvaluationControler;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,6 +27,6 @@ class Module extends Model
     ];
     public function evaluation()
     {
-        return $this->hasMany(Evaluation::class);
+        return $this->hasMany(EvaluationControler::class);
     }
 }

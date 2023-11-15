@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class Evaluation extends Controller
+use Illuminate\Support\Facades\DB;
+use App\Models\Evaluations;
+class EvaluationControler extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $evaluations = Evaluation::all();
+        $evaluations = EvaluationControler::all();
         return view('evaluation.createEvaluation', compact('evaluations'));
     }
 
@@ -37,7 +38,7 @@ class Evaluation extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        Evaluation::create([
+        EvaluationControler::create([
             'date' => $request->date,
             'relation_mod' => $request->relation_mod,
             'title' => $request->title,
@@ -51,8 +52,8 @@ class Evaluation extends Controller
      */
     public function show(string $id)
     {
-         $evaluationToShow = Evaluation::where('id', $id)->first();
-            return view('evaluation.showEvaluation', compact('evaluationToShow'));
+         $evaluationToShow = Evaluations::find($id);
+            return view('evaluation.createEvaluation')->with('evaluationToShow', $evaluationToShow);
     }
 
     /**
@@ -60,7 +61,7 @@ class Evaluation extends Controller
      */
     public function edit(string $id)
     {
-        $evaluationToEdit = Evaluation::where('id', $id)->first();
+        $evaluationToEdit = EvaluationControler::where('id', $id)->first();
         return view('evaluation.editEvaluation', compact('evaluationToEdit'));
     }
 
@@ -69,7 +70,7 @@ class Evaluation extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $evaluationToUpdate = Evaluation::where('id', $id)->first();
+        $evaluationToUpdate = EvaluationControler::where('id', $id)->first();
 
         if ($request->has('date')) {
             $evaluationToUpdate->date = $request->input('date');
@@ -96,7 +97,7 @@ class Evaluation extends Controller
      */
     public function destroy(string $id)
     {
-        $evaluationToDelete = Evaluation::where('id', $id)->first();
+        $evaluationToDelete = EvaluationControler::where('id', $id)->first();
         $evaluationToDelete->delete();
     }
 }

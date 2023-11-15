@@ -8,6 +8,7 @@
 
 <?php
 $groupedEvaluations = [];
+
 foreach ($EvaluationEleve as $eval) {
     $evaluationId = $eval->evaluation_id;
     if (!isset($groupedEvaluations[$evaluationId])) {
@@ -19,6 +20,8 @@ foreach ($EvaluationEleve as $eval) {
 
 @foreach($groupedEvaluations as $evaluationId => $evaluations)
     <h2>Évaluation ID: {{ $evaluationId }}</h2>
+
+    <h3>Notes de l'évaluation :</h3>
     <table>
         @foreach($evaluations as $eval)
             <tr>
@@ -26,6 +29,18 @@ foreach ($EvaluationEleve as $eval) {
             </tr>
         @endforeach
     </table>
+
+    <h3>Élèves sans la moyenne :</h3>
+    <table>
+        @foreach($evaluations as $eval)
+            @if($eval->note < 10)
+                <tr>
+                    <td>{{ $eval->eleve->name }}</td>
+                </tr>
+            @endif
+        @endforeach
+    </table>
+
 @endforeach
 
 </body>
